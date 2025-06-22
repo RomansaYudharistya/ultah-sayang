@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>Happy Birthday, Putri!</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Comic Sans MS', cursive;
+      background: linear-gradient(to bottom, #ffdef0, #ffd0eb);
+      color: #d63384;
+      text-align: center;
+    }
+    h1 {
+      font-size: 3em;
+      margin-top: 40px;
+      animation: pop 1s ease-out;
+    }
+    @keyframes pop {
+      from { transform: scale(0); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    .photo-frame, .booth-frame, .game-box {
+      background: white;
+      border: 10px dashed #ffb6c1;
+      margin: 20px auto;
+      padding: 10px;
+      width: 300px;
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .photo-frame img, .booth-frame img {
+      width: 100%;
+      border-radius: 10px;
+    }
+    .btn {
+      margin: 10px;
+      padding: 12px 20px;
+      background: #ff69b4;
+      border: none;
+      color: white;
+      font-size: 1em;
+      border-radius: 25px;
+      cursor: pointer;
+      box-shadow: 0 4px #b03a5b;
+    }
+    #surprise {
+      display: none;
+      font-size: 1.2em;
+      margin-top: 20px;
+    }
+    .sticker {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 50px;
+    }
+    .game-question {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Musik Lokal -->
+  <audio id="musikUlangTahun" loop>
+    <source src="laguultah.mp3" type="audio/mp3">
+    Browser kamu tidak mendukung pemutar audio.
+  </audio>
+  <button class="btn" onclick="document.getElementById('musikUlangTahun').play()">▶️ Play Musik</button>
+
+  <!-- Foto Ulang Tahun -->
+  <div class="photo-frame">
+    <img src="sayangku.jpg" alt="Foto Ultah">
+    <p><strong>🎈 Ultah kamu yang paling manis tahun ini!</strong><br>
+    Semoga selalu bahagia dan dilimpahi cinta setiap hari 💝</p>
+  </div>
+
+
+  <!-- Judul -->
+  <h1>🎂 Happy Birthday, Putri! 🎂</h1>
+  <p id="typedText"></p>
+
+  <!-- Foto Kenangan -->
+  <div class="photo-frame">
+    <img src="nontonkonser.jpg" alt="Kenangan Manis" />
+    <p><strong>📸 Kenangan waktu kita ke nonton konser Hindia!</strong></p>
+  </div>
+
+  <!-- Kejutan -->
+  <button class="btn" onclick="showSurprise()">Klik untuk Kejutan!</button>
+  <div id="surprise">🎁 Kamu spesial banget hari ini! Jangan lupa senyum 💖</div>
+
+  <!-- Photobooth -->
+  <div class="booth">
+    <h2>📷 Photobooth Lucu</h2>
+    <div class="booth-frame">
+      <img src="photobosth.jpg" alt="Foto kamu">
+    </div>
+  </div>
+
+  <!-- Mini Game -->
+  <div class="game-box">
+    <h2>🎮 Tebak Kenangan Kita</h2>
+    <div class="game-question">Apa tanggal jadian kita?</div>
+    <button class="btn" onclick="checkAnswer('A')">A. 17 April</button><br>
+    <button class="btn" onclick="checkAnswer('B')">B. 23 April</button><br>
+    <button class="btn" onclick="checkAnswer('C')">C. 10 April</button><br>
+    <p id="game-result"></p>
+  </div>
+
+  <script>
+    const text = "Semoga hari ulang tahunmu seindah senyummu dan semanis hatimu 💕";
+    let i = 0;
+    function typeWriter() {
+      if (i < text.length) {
+        document.getElementById("typedText").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, 60);
+      }
+    }
+    function showSurprise() {
+      document.getElementById("surprise").style.display = "block";
+    }
+    function checkAnswer(option) {
+      const result = document.getElementById("game-result");
+      if (option === 'B') {
+        result.innerHTML = "✅ Benar! Kita jadian 23 April 🥰";
+      } else {
+        result.innerHTML = "❌ Salah dong 😜 Tapi tetep sayang kok~";
+      }
+    }
+    window.onload = typeWriter;
+  </script>
+</body>
+</html>
